@@ -125,11 +125,13 @@ public class Math
 ##### *Class Naming Guidelines*
 * Class names must be nouns or noun phrases.
 * Use Pascal Casing.
+* Do not include any underscore.
 * Do not use any class prefix.
 
 ##### *Interface Naming Guidelines* 
 * Name interfaces with nouns or noun phrases or adjectives describing behavior. (Example IComponent or IEnumberable)
 * Use Pascal Casing.
+* Do not include any underscore.
 * Use I as prefix for the name, it is followed by a capital letter (first char of the interface name)
 
 ##### *Enum Naming Guidelines* 
@@ -147,25 +149,32 @@ public class Math
 *Use Camel Casing after the underscore.
 
 ##### *Method Names*#####
-*Name methods with verbs or verb phrases.
-*Use Pascal Casing.
+* Name methods with verbs or verb phrases.
+* Use Pascal Casing.
 
 ##### *Method Parameters and Local Variables*#####
-*Use descriptive names that, if done properly should be enough to indicate the variable meaning/usage and provide insight into the underlying type.
-*Use Camel Casing.
+* Use descriptive names that, if done properly should be enough to indicate the variable meaning/usage and provide insight into the underlying type.
+* Use Camel Casing.
 
 ##### *Property Names*#####
-*Name properties using nouns or noun phrases.
-*Use Pascal Casing.
-*Consider naming a property with the same name as the underlying class variable (without the underscore prefix).
+* Name properties using nouns or noun phrases.
+* Use Pascal Casing.
+* Consider naming a property with the same name as the underlying class variable (without the underscore prefix).
 
 ##### *Event Names*#####
-*Name event handlers with the EventHandler suffix.
-*Use two parameters named sender and e.
-*Use Pascal Casing.
-*Name event argument classes with the EventArgs suffix.
-*Name event names that have a concept of pre and post using the present and past tense.
-*Consider naming events using a verb.  Consider using the “On” prefix, e.g., OnStart.
+* Name event handlers with the EventHandler suffix.
+* Use two parameters named sender and e.
+* Use Pascal Casing.
+* Name event argument classes with the EventArgs suffix.
+* Name event names that have a concept of pre and post using the present and past tense.
+* Consider naming events using a verb.  Consider using the “On” prefix, e.g., OnStart.
+
+##### *Namespace Names*#####
+* Use Pascal Casing.
+
+##### *Exception Names*#####
+* Use Pascal Casing.
+* End with X.
 
 #####*Capitalization summary*#####
 
