@@ -177,6 +177,7 @@ public class Math
 * Use Pascal Casing.
 
 ##### *Private/Public Fields Names*#####
+* Use Pascal Casing.
 * Do not include any underscore.
 
 ##### *Controls Names*#####
@@ -736,16 +737,16 @@ const) as an exception to this rule, but it should not be the rule.
 Classes should have less than X Constructors and Methods.
 
 ###Avoid large Methods - too many Lines of Codes###
-Methods should not have more than X lines of code.  Large methods are more difficult to understand, and are a sign of a bad modularity of the code.
+Methods should not have more than X lines of code. Large methods are more difficult to understand, and are a sign of a bad modularity of the code.
 
 ###Avoid Classes with a High Lack of Cohesion###
-Lack of cohesion implies Classes should probably be split into two or more sub/classes.  Cohesiveness of Methods within a Class is desirable, since it promotes encapsulation.  Low cohesion increases complexity, thereby increasing the likelihood of errors during the development process.  Avoid Classes with a High Lack of Cohesion in Methods (LCOM > X). LCOM is an indicator of a Class whose methods only a few of its fields. 
+Lack of cohesion implies Classes should probably be split into two or more sub/classes. Cohesiveness of Methods within a Class is desirable, since it promotes encapsulation.  Low cohesion increases complexity, thereby increasing the likelihood of errors during the development process.  Avoid Classes with a High Lack of Cohesion in Methods (LCOM > X). LCOM is an indicator of a Class whose methods only a few of its fields. 
 
 ###Avoid Classes with High Coupling Between Objects###
 The Coupling Between Object(CBO) is equal to the fan-out of a Class, that is, the number of other Classes that are referenced through one of its methods or one of its fields. Excessive coupling between objects is detrimental to modular design and prevents reuse.  The larger the number of couples, the higher the sensitivity to changes in other parts of the design and therefore the more difficult the maintenance.  High CBO numbers might indicate that a class has too many responsibilities. Such a class is potential candidate for a refactoring where the class would delegate some the responsibilities to other classes or new classes (Extract Class, Extract Method refactoring). This will increase modularity and reusability.  When refactoring with architecture in mind, the CBO metric can be used to check classes running on the application client that have high coupling.  These classes are then good candidate for a refactoring towards the Session Facade pattern.
 
 ###Avoid High Response for a Class###
-Avoid High Response for a Class (RFC > X).  RFC is the total number of local methods and remote methods called by methods in the Class.  If a large number of methods can be invoked in response to a message, the testing and debugging of the Class becomes more complicated since it requires a greater level of understanding required on the part of the tester. Reduce the number of local methods and remote methods called by methods in the Class.  Reduce the number of local methods and remote methods called by methods in the Class.
+Avoid High Response for a Class (RFC > X.  RFC is the total number of local methods and remote methods called by methods in the Class.  If a large number of methods can be invoked in response to a message, the testing and debugging of the Class becomes more complicated since it requires a greater level of understanding required on the part of the tester. Reduce the number of local methods and remote methods called by methods in the Class.  Reduce the number of local methods and remote methods called by methods in the Class.
 
 ###Avoid Classes with High Weighted Methods per Class###
 The Weighted Methods per Class metric is defined as the sum of all the Classes method's cyclomatic complexity.  The number of methods and complexity of methods is an indicator of how much time and effort is required to develop and maintain the object.  For maintainability reasons, High Weighted Methods per Class should not be too high.  Reduce the number  - by splitting the Class in two or moving method to a component Class - or the Cyclomatic Complexity of the method of the non compliant Class.
@@ -760,7 +761,7 @@ Public Data Ratio is the percentage of public fields among all fields. Propertie
 High Number Of Children (NOC) is the number of immediate <Sub-Classes> of the Class.  Depth is generally better than breadth in class hierarchy, since it promotes reuse of methods through inheritance.  NOC measures the potential influence a Class has on the design.  Classes with large number of children require more intensive testing as through inheritance an implementation error can potentially lead to many regression bugs. Technical or framework classes which are evolving and will not be changed often should not be concerned by this rule.
 
 ###Avoid Artifacts with High Cyclomatic Complexity###
-Cyclomatic Complexity is a measure of the complexity of the control structure of an Artifact.  It is the number of linearly independent paths and therefore, the minimum number of independent paths when executing the software.  The effort and time for diagnosis of deficiencies or causes of failures, or for identification of parts to be modified is directly related to the number of execution paths, i.e. the complexity of the control flow.  Analyzability declines with increasing Cyclomatic Complexity. Each modification must be correct for all execution paths.  Cyclomatic Complexity computes the number of the linearly independent paths, a lower bound of all execution paths ignoring multiple iterations.  Changeability declines with increasing Cyclomatic Complexity.  Complete testing requires coverage of all execution paths.  Cyclomatic Complexity computes the number of the linearly independent paths.  Review the design of the Artifact to reduce number of independent paths. E.g.: Reduce the number of conditional statements.
+Cyclomatic Complexity is a measure of the complexity of the control structure of an Artifact.  It is the number of linearly independent paths and therefore, the minimum number of independent paths when executing the software.  The effort and time for diagnosis of deficiencies or causes of failures, or for identification of parts to be modified is directly related to the number of execution paths, i.e. the complexity of the control flow.  Analyzability declines with increasing Cyclomatic Complexity. \nEach modification must be correct for all execution paths.  Cyclomatic Complexity computes the number of the linearly independent paths, a lower bound of all execution paths ignoring multiple iterations.  Changeability declines with increasing Cyclomatic Complexity.  Complete testing requires coverage of all execution paths.  Cyclomatic Complexity computes the number of the linearly independent paths.  Review the design of the Artifact to reduce number of independent paths. E.g.: Reduce the number of conditional statements.
 
 ###Avoid Artifacts with High Depth of Code###
 Depth of Code is measured as the maximum number of nested control statements in an artifact.  Artifact that contains an IF statement which contains a While loop which itself contains another IF statement will have a Depth of Code of 3 (at least).\nAvoid Artifacts with Depth of Code (DoC) greater than X.  Complex Artifacts are difficult to maintain. Keeping Artifacts small and simple ensures a good readability of the code.  Review the design of the Artifact to reduce the Depth of Code.
@@ -780,7 +781,7 @@ String concatenation resolved at runtime is much slower than using StringBuilder
 ###Avoid String concatenation in loops###
 When placed in a loop, String concatenation results in the creation and garbage collection of large numbers of temporary objects.  This both consumes memory and can dramatically slow the program execution.  It is recommended to create a StringBuilder before entering the loop, and append to it within the loop, thus reducing the overhead.  It is recommended to create a StringBuilder before entering the loop, and append to it within the loop, thus reducing the overhead. 
 
-###Avoid the use of 'is' inside loops###
+###Avoid the use of is inside loops###
 The run-time type checking is a time expensive operation and as such should be avoided within loops.  In a more general matter, the use of is operator, run-time type checking might indicate a misuse of Object Oriented programming.  In deed, it is always recommended to design classes and interfaces so client code do not need to use 'is' operator and down-casting. The recommended way is to prefer polymorphism over 'is' operator and down-casting.  Prefer polymorphism  over 'is' operator and down-casting.  It is always recommended to design classes and interfaces so client code do not need to use 'is' operator and down-casting.  The recommended way is to prefer polymorphism over  'is' operator and down-casting.
 
 ###Avoid instantiations inside loops###
@@ -789,10 +790,10 @@ One of the fundamental OO performance management principles is this: Avoid exces
 ###User Interface elements must not use directly the database###
 User Interface classes are classes belonging to User Interface namespaces such as WinForms or namespaces used for web pages implementation.  Direct access to the database from the User Interface does not respect the multi-layer architecture principles making the application more difficult to change.  Furthermore, accessing database elements directly from the User Interface prevents access control at the database level. E.g.: use of non-optimized query against the database and can be the source of performance.
 
-###Avoid Namespaces with High Efferent Coupling (CE)###
-CE(also known as Outgoing Dependencies or the Number of Types outside a namespace that Types of the namespace Depend on) indicates the number of other namespaces that classes and interfaces in the analyzed namespace depend upon. This is an indicator of the namespace's independence.  Excessive coupling is detrimental to modular design since classes are not independent. A large efferent coupling indicates that a class is unfocussed and may also indicate that it is unstable, since it depends on the stability of all the types to which it is coupled. This prevents reuse since a high coupling possibly indicates a namespace is poorly designed and difficult to understand/maintain. Extracting classes from the original class so the class is decomposed into smaller classes can reduce efferent coupling, this improves modularity and promotes encapsulation.
+###Avoid Namespaces with High Efferent Coupling(CE)###
+CE(also known as Outgoing Dependencies or the Number of Types outside a namespace that Types of the namespace Depend on) indicates the number of other namespaces that classes and interfaces in the analyzed namespace depend upon. This is an indicator of the namespace's independence.  Excessive coupling is detrimental to modular design since classes are not independent.  A large efferent coupling indicates that a class is unfocussed and may also indicate that it is unstable, since it depends on the stability of all the types to which it is coupled. This prevents reuse since a high coupling possibly indicates a namespace is poorly designed and difficult to understand/maintain. Extracting classes from the original class so the class is decomposed into smaller classes can reduce efferent coupling, this improves modularity and promotes encapsulation.
 
-###Avoid namespaces with High Afferent Coupling (CA)###
+###Avoid namespaces with High Afferent Coupling(CA)###
 Afferent Coupling (also known as Incoming Dependencies and Number of Types outside a namespace that Depend on Types of the namespace) indicates The number of other namespaces that depend upon classes within the analyzed namespace. Afferent Coupling is a time consuming determination of couplings between namespaces, hence showing which namespaces that depend upon each other.  The number of namespaces that depend upon the analyzed namespace is an indication of the analyzed namespace's level of responsibility.  In order to improve modularity and promote encapsulation, inter-object class couples should be kept to a minimum.  If the namespace is relatively abstract then a large number of incoming dependencies is acceptable but the larger the number of couples, the higher the sensitivity to changes in other parts of the design, and therefore maintenance is difficult.  Excessive coupling between concrete object classes is detrimental to modular design and prevents reuse.  If a namespace is highly abstract then it should be very stable.  If the namespace is highly concrete (un-abstract), then it would be acceptably unstable as it already has reached its maximum specialization.  If a category is to be stable, it should also consist of abstract classes so that it can be extended.  Stable categories that are extensible are flexible and do not constrain the design.
 
 ###Call 'base.Dispose()' or 'MyBase.Finalize()' in the "finally" block of 'Dispose(bool)' methods###
@@ -812,15 +813,66 @@ When two namespaces refer to each other through a call, the result is a circular
 
 ###Avoid calling properties that clone values in loops###
 It is about a property accessed inside an iteration statement when the property returns a cloned object.  In this case, multiple identical objects are created.  If this is not the intent, access the property outside the iteration statement. Otherwise, multiple unnecessary objects are created and afterward, these objects must be garbage collected.  This degrades performance, especially in compact iteration statements.  Note that it is possible that such a construct is intended, and in that case this violation is perfectly acceptable.  Whenever possible assign the property to a local variable outside the iteration statement and use the local variable inside the iteration statement.
+ 
+###Avoid catching an exception of type Exception###
+Directly catching the Exception class means that the try/catch will process all the exceptions in the same way: "RuntimeException" will be processed in the same way as application specific exceptions such "BankingException" or "CredentialException".  This will prevent the application from carrying out the specific recovery process that is needed and as a consequence will threaten both application robustness and security. For example, each exception related to resource allocation whose catch does not explicitly release the resource might create a "resource leak".  When a leak occurs on a limited set of available resources, such as a database connection, the application can then become unusable because resources cannot be allocated any more.  The application also becomes difficult to support and run in production as root-cause analysis is made more difficult.  The support teams might not even be aware that something went wrong (by catching Exception, RuntimeException might not be visible any more).  Always use the Sub classed Classes with appropriate and specific recovery code.
+ 
+###Avoid throwing an exception of type Exception###
+Whenever a method throws an exception of type Exception, it prevents its callers from carrying out the specific recovery process that is required and as a consequence this will threaten both application robustness and security. For example, each exception related to resource allocation whose catch does not explicitly release the resource might create a "resource leak".  When a leak occurs on a limited set of available resources, such as a database connection, the application can then become unusable because resources cannot be allocated any more.  The application also becomes difficult to support and run in production as root-cause analysis is made more difficult.  The method must throw a Subclass of the generic Exception that provides valuable information about the exception that occurred in order to help programmers call this method to write the appropriate recovery or error management code.
+
+###Avoid call to AcceptChanges in a loop###
+Avoid call to AcceptChanges (of DataSet, DataTable etc) in loop as this have a negative impact on performance.  From a performance point of view, it is better to call AcceptChanges only once at the end of a loop rather than at each iteration  
+ 
+###Avoid empty finally blocks###
+In a try and catch/finally statement, finally blocks should contain code to handle the thrown exception.  Finally blocks must be used to execute the code that is needed after either the try and/or the catch block have been executed.  It is usually the place to code the release of resources used in the try block.  Thus an empty finally block is most probably the sign of potential "resource leaks" that will jeopardize the application's stability.
+ 
+###Avoid empty catch blocks ###
+In a try and catch statement, Catch blocks should contain code to handle the thrown exception. If they are empty or contain only comments, the Exception will not be handled.  An empty catch block defeats the purpose of exceptions. When an exception occurs, nothing happens and the program fails for an unknown reason.  The application can be in an unknown state that will affect subsequent processing.  Since the reason for the issue (the type of the exception and potential embedded message) are ignored, it will require more time to fix the issue.
+
+###Avoid large Interfaces - too many Methods###
+For maintainability and readability reasons, Interfaces should not have too many Methods.  Review the Interface design to reduce the number of Methods.
+
+###Avoid using untyped DataSet###
+A typed DataSet is a class that derives from a DataSet.  As such, it inherits all the methods, events, and properties of a DataSet.  Additionally, a typed DataSet provides strongly typed methods, events, and properties. This means you can access tables and columns by name, instead of using collection-based methods.  Aside from the improved readability of the code, a typed DataSet also allows the Visual Studio .NET code editor to automatically complete lines as you type.  Additionally, the strongly typed DataSet provides access to values as the correct type at compile time.  With a strongly typed DataSet, type mismatch errors are caught when the code is compiled rather than at run time.  Use Typed DataSet instead of Untyped DataSet.
+
+###Avoid unreferenced Data Members and Methods###
+All Data Members and Methods should be referenced.  Unreferenced code may be the symptom of Dead Code.  Dead Code must be avoided as it makes source code less readable and increases the cost of the software maintenance.  Warning:Unreferenced code can also be the symptoms of missing code (code not included in the source code analysis) and/or can be the symptom of use of polymorphism.  The intensive use of polymorphism can make the application easier to change but much more difficult to test, debug and stabilize.
+
+###Avoid changing DataSource member before ValueMember/DisplayMember###
+When populating data bound controls such as ComboBox or ListBox, it is more efficient to set the DataSource property last, after ValueMember and DisplayMember are set. Otherwise your control will be repopulated as a result of the ValueMember change.  BindingSource.SuspendBinding and BindingSource.ResumeBinding are two methods that allow the temporary suspension and resumption of data binding.  SuspendBinding prevents changes from being pushed into the data source until ResumeBinding is called.  These methods are designed to be used with simple bound scenarios such as TextBox or ComboBox data binding. However, Controls that implement complex data binding, such as the DataGridView control, update their values based on change events such as ListChanged, so calling SuspendBinding will not prevent them from receiving changes to the data source.  You can use these methods in complex binding scenarios if you suppress ListChanged events by setting the RaiseListChangedEvents property to false.
+
+###Disable constraints before merging DataSet###
+Disable constraints before merging the document and re-enable them after the Merge using the EnforceConstraint property.  By disabling/enabling constraints before/after call to Merge method, the merge process is quicker.
+
+###Avoid doing select on Datatable in loop###
+Calling the Select method on a DataTable in a loop  generally involve performance problems because the data is not indexed. It's better to use indexed access methods.   Rather use the .Find method if using the Primary Key or create a DataView (with the required columns on sort) on the required columns and use the Find/FindRows methods to retrieve the data repeatedly because this will use indexed data.  If using DataView, use the constructor with all arguments to avoid index rebuilding.
+
+###Use BeginUpdate/EndUpdate when adding Items.Add method in loop###
+When using Items.Add in loops, you should use BeginUpdate/EndUpdate on the control to avoid unnecessarily refresh and thus improve the performance.  Call to BeginUpdate() before the loop and EndUpdate() after the loop.\nAlternatively, you can use AddRange method instead of Add.
+
+###Avoid cross-site scripting DOM vulnerabilities(CWE-79)###
+The most dangerous web application vulnerabilty is known as cross-site scripting (XSS).  It is caused by malicious script echoed back into HTML returned from a trusted site, and runs under trusted context.  To avoid the creation of XSS flaws, the Open Web Application Security Project(OWASP) recommends both input validation and "strong output encoding" or sanitization "Strong output encoding."   Ensure that all user-supplied data is appropriately entity encoded (either HTML or XML depending on the output mechanism) before rendering, taking the approach to encode all characters other than a very limited subset. This is the approach of the Microsoft Anti-XSS library, and the forthcoming OWASP PHP Anti-XSS library.  Also, set the character encodings for each page you output, which will reduce exposure to some variants.   Code the appropriate sanitization methods as close as possible to the user input method call.
+
+###Avoid SQL injection vulnerabilities###
+In web based applications, the validation of all user input is critical to avoid major security problems that would come from the Injection flaws.  To avoid the creation of Injection flaws, the Open Web Application Security Project (OWASP) recommends the validation of all user input: Use a standard input validation mechanism to validate all input data for length, type, syntax, and business rules before accepting the data to be displayed or stored. Use an "accept known good" validation strategy.  Reject invalid input rather than attempting to sanitize potentially hostile data.  Do not forget that error messages might also include invalid data.  Code the appropriate input validation as close as possible to the user input call.
+
+###Avoid XPath, OS command, file path manipulation, and LDAP injection vulnerabilities###
+In web based applications, the validation of all user input is critical to avoid major security problems that would come from the Injection flaws.  To avoid the creation of Injection flaws, the Open Web Application Security Project (OWASP) recommends the validation of all user input: Use a standard input validation mechanism to validate all input data for length, type, syntax, and business rules before accepting the data to be displayed or stored.  Use an "accept known good" validation strategy.  Reject invalid input rather than attempting to sanitize potentially hostile data.  When software does not validate input properly, an attacker is able to craft the input in a form that is not expected by the rest of the application.  This will lead to parts of the system receiving unintended input, which may result in altered control flow, arbitrary control of a resource, or arbitrary code execution.  These rules ensure  that the appropriate input validation is coded within the same method that called the user input call, making security checking easier for all team members.
+
+###The exception Exception should never been thrown. Always Subclass Exception and throw the subclassed Classes###
+Whenever a method throws an exception of type Exception, it prevents its callers from carrying out the specific recovery process that is needed and as a consequence this will threaten both application robustness and security.  The method must throw a Subclass of the generic Exception that provides valuable information about the exception that occurred in order to help programmers calling this method to write the appropriate recovery or error management code.
 
 ###Avoid Artifacts with High Integration Complexity###
-Integration Complexity measures the number of independent integration paths. Integration paths are paths of the control flow graph in which another object is invoked
+Integration Complexity measures the number of independent integration paths. Integration paths are paths of the control flow graph in which another object is invoked.  Review the design of the Artifact to reduce the number of independent integration paths. E.g.: reduce the number of CALL statements.
 
 ###Avoid Interface implementation on Structures###
 Interfaces should not be implemented on Structures.  C## allows structs to implement interfaces. However this language feature can produce unexpected results, as structs are value types while interfaces require reference types to interact with. This means that calls to interface methods via implicit boxing operations will modify a copy rather than the original object. When implicit boxing occurs, a copy of the struct is placed on the heap and calls to the interface methods are executed on this copy via a reference.  All changes to the state of the struct object are discarded after that call.  Declare the type as a class rather than a struct.  This is better Object Oriented practice as classes can hide their implementation details using efficient class property encapsulation.  Create a wrapper class that contains the struct as a member - for example a property (for efficient encapsulation), and use the wrapper class to implement the interface
 
 ###Avoid unreferenced Interfaces/Classes###
 All Interfaces and Classes should be referenced.
+
+###Avoid using Keywords as names###
+Keywords should not be used as names.  Change name according to the naming convention.
 
 ###Avoid using String.Empty for empty string tests###
 String.Empty should not be used for empty string tests.  If you want to test for empty strings, test the length (compare with 0) of the string instead.  This is over twice as quick. Also as String objects can be null, you can use String.IsNullOrEmpty instead - however, do not compare it to true (ie not if (StringIsNullOrEmpty (myString)  == true), just use: if (StringIsNullOrEmpty (myString)).
@@ -842,6 +894,9 @@ A Superclass is not allowed to have knowledge of one of its Subclasses.  The Sup
 
 ###Avoid Artifacts with High Fan-In###
 The Fan-In of an Artifact is the number of other Artifacts that are referencing it. When computing the Fan-In of an Artifact, multiple accesses to it from the same Artifact are counted as one access.  The higher the number of reference to an Artifact, the more difficult the maintenance as all referencing Artifacts will have to be updated or tested. Reduce the number of references to the Artifact.
+
+###Avoid Artifacts with High Fan-Out###
+Avoid Artifacts with High Fan-Out (Fan-Out > X). The Fan-out of an Artifact is the number of other Artifacts that are referenced in it. When computing the Fan-Out of an Artifact, multiple accesses to the same component of an Artifact are counted as one access.  Reduce the number of referenced Artifacts.  The higher the number of referenced Artifacts, the more difficult the maintenance and evolution as all updates in referenced Artifacts will have to be tested and taken into account.
 
 ###Avoid having Classes implementing too many Interfaces###
 Avoid Classes implementing more than X Interfaces.
@@ -969,13 +1024,13 @@ can provide insight into the functionality, give them meaningful names.
 
 ##Embedded Comments and Documentation##
 ###Avoid uncommented Methods and Methods with a very low comments/code ratio###
-Methods should have comments. Methods should have at least a ratio comment/code > X%.
+Add comments into method implementation to explain what is their goal and how they work. Methods should have comments. Methods should have at least a ratio comment/code > X%.
 
 ###Avoid Classes with a very low comment/code ratio###
-Classes should have at least a ratio comment/code > X%.
+Add comments into classes defintion to explain what are their goal and how they work. Classes should have at least a ratio comment/code > X%.
 
 ###Avoid Interfaces with a very low comment/code ratio###
-Interfaces should have at least a ratio comment/code > X%.
+Interfaces must be documented. Documenting interfaces is extremely important as the interfaces define a contract that will be implemented and used by others. Interfaces should have at least a ratio comment/code > X%.
 
 ###Block Comments###
 Block comments should not be used above Constructors, Methods, and Properties.  Instead use 
