@@ -137,6 +137,7 @@ public class Math
 ##### *Enum Naming Guidelines* 
 * Use Pascal Casing for enum value names and enum type names.
 * Don’t prefix (or suffix) an enum type or enum values.
+* Do not include any underscore.
 * Use singular names for enums.
 
 ##### *Static and Const Field Names* 
@@ -151,6 +152,7 @@ public class Math
 ##### *Method Names*#####
 * Name methods with verbs or verb phrases.
 * Use Pascal Casing.
+* Do not include any underscore.
 
 ##### *Method Parameters and Local Variables*#####
 * Use descriptive names that, if done properly should be enough to indicate the variable meaning/usage and provide insight into the underlying type.
@@ -159,12 +161,14 @@ public class Math
 ##### *Property Names*#####
 * Name properties using nouns or noun phrases.
 * Use Pascal Casing.
+* Do not include any underscore.
 * Consider naming a property with the same name as the underlying class variable (without the underscore prefix).
 
 ##### *Event Names*#####
 * Name event handlers with the EventHandler suffix.
 * Use two parameters named sender and e.
 * Use Pascal Casing.
+* Do not include any underscore.
 * Name event argument classes with the EventArgs suffix.
 * Name event names that have a concept of pre and post using the present and past tense.
 * Consider naming events using a verb.  Consider using the “On” prefix, e.g., OnStart.
@@ -172,6 +176,14 @@ public class Math
 ##### *Namespace Names*#####
 * Use Pascal Casing.
 
+##### *Private/Public Fields Names*#####
+* Use Pascal Casing.
+* Do not include any underscore.
+
+##### *Controls Names*#####
+* Use naming conventions (Exmaple btn* for buttons, chk* for check boxes, cmb* for combo boxes)
+* Do not include any underscore.
+* 
 ##### *Exception Names*#####
 * Use Pascal Casing.
 * End with X.
@@ -488,6 +500,8 @@ put variables of different types on the same line when declaring them.  Example:
 int a, b; // What is 'a'? What does 'b' stand for?
 ```
 The above example also demonstrates the drawbacks of non-obvious variable names.  
+#####*Avoid declaring public Fields*#####
+Public Fields (defined in a class) should not be used. Public Fields can be accessed by any other Class, therefore its value can be modified at any time, without control by the Class itself. In addition, direct use of Public Fields does not let Field definition evolve without requiring updates to all Objects referencing it. This goes against OO Encapsulation concepts.
 
 #####*Initialization*#####
 Wherever possible try to initialize local variables as soon as they are declared. 
@@ -719,11 +733,53 @@ Do not make any instance or class variable public make them private or protected
 use properties if you need to expose a class variable.  You may use public static fields (or 
 const) as an exception to this rule, but it should not be the rule.
 
-###No embedded, user-facing strings.###
+###Avoid large Classes - too many Constructors and Methods###
+Classes should have less than X Constructors and Methods.
+
+###Avoid large Methods - too many Lines of Codes###
+Methods should not have more than X lines of code. Large methods are more difficult to understand, and are a sign of a bad modularity of the code.
+
+###Avoid Classes with a High Lack of Cohesion###
+Lack of cohesion implies Classes should probably be split into two or more sub/classes. Cohesiveness of Methods within a Class is desirable, since it promotes encapsulation. Low cohesion increases complexity, thereby increasing the likelihood of errors during the development process.  Avoid Classes with a High Lack of Cohesion in Methods (LCOM > X). LCOM is an indicator of a Class whose methods only a few of its fields. 
+
+###Avoid Classes with High Coupling Between Objects###
+The Coupling Between Object (CBO) is equal to the fan-out of a Class, that is, the number of other Classes that are referenced through one of its methods or one of its fields. Excessive coupling between objects is detrimental to modular design and prevents reuse.  The larger the number of couples, the higher the sensitivity to changes in other parts of the design and therefore the more difficult the maintenance.  High CBO numbers might indicate that a class has too many responsibilities. Such a class is potential candidate for a refactoring where the class would delegate some the responsibilities to other classes or new classes (Extract Class, Extract Method refactoring). This will increase modularity and reusability.  When refactoring with architecture in mind, the CBO metric can be used to check classes running on the application client that have high coupling. These classes are then good candidate for a refactoring towards the Session Facade pattern.
+
+###Avoid High Response for a Class###
+Avoid High Response for a Class (RFC > X)\nRFC is the total number of local methods and remote methods called by methods in the Class.  If a large number of methods can be invoked in response to a message, the testing and debugging of the Class becomes more complicated since it requires a greater level of understanding required on the part of the tester. Reduce the number of local methods and remote methods called by methods in the Class.
+
+###Avoid Artifacts with High Integration Complexity###
+Avoid Artifacts with High Integration Complexity (IC greater than X). Integration Complexity measures the number of independent integration paths. Integration paths are paths of the control flow graph in which another object is invoked
+
+###Avoid Interface implementation on Structures###
+Interfaces should not be implemented on Structures. C## allows structs to implement interfaces. However this language feature can produce unexpected results, as structs are value types while interfaces require reference types to interact with. This means that calls to interface methods via implicit boxing operations will modify a copy rather than the original object. When implicit boxing occurs, a copy of the struct is placed on the heap and calls to the interface methods are executed on this copy via a reference. All changes to the state of the struct object are discarded after that call.  Declare the type as a class rather than a struct. This is better Object Oriented practice as classes can hide their implementation details using efficient class property encapsulation. Create a wrapper class that contains the struct as a member - for example a property (for efficient encapsulation), and use the wrapper class to implement the interface
+
+###Avoid unreferenced Interfaces/Classes###
+All Interfaces and Classes should be referenced.
+
+###Avoid using String.Empty for empty string tests###
+String.Empty should not be used for empty string tests. If you want to test for empty strings, test the length (compare with 0) of the string instead. This is over twice as quick. Also as String objects can be null, you can use String.IsNullOrEmpty instead - however, do not compare it to true (ie not if (StringIsNullOrEmpty (myString)  == true), just use: if (StringIsNullOrEmpty (myString)).
+
+###Data Access must be based on Stored Procedure Calls###
+By using Stored Procedures the database engine is more able to optimize the access plan and to reuse them. It also limit the parsing phase of the SQL order. This generally result in better performance.  From a security point of view, it is generally safer to use SP rather than dynamic SQL as this limit the risk of having SQL-injection. Transform the SQL into a SP and use parameters. Then call the SP.  Do not transform the SQL in a SP that in turn uses dynamic SQL (e.g. @exec or EXECUTE_IMMEDIATE) as this deny all the benefits of the change.
+
+###Avoid direct access to Database Tables###
+Direct access to database Table prevents the control at the database level of accesses. E.g.: use of non-optimized query against the database. Use Stored Procedures instead.
+
+###No embedded, user-facing strings###
 No UI elements (Labels, Drop Downs, Text Boxes, Error Messages, etc.) should use text that is 
 embedded in the application.  In .Net much of this can be overcome by enabling localization, 
 and the remainder should rely on some construct that can display the appropriate text from a 
 persistent store such as the Notification layer.
+
+###Avoid Superclass knowing Subclass### 
+A Superclass is not allowed to have knowledge of one of its Subclasses. The Superclass has knowledge of the Subclass if the Superclass directly calls a Subclass-method, uses a Subclass-attribute or refers to the name of the Subclass.  Referencing down the inheritance tree is against Object-Oriented practices. This is an indication of a poor class design and class inheritance. These practices increase the complexity of the code and decrease maintainability.
+
+###Avoid Artifacts with High Fan-In###
+The Fan-In of an Artifact is the number of other Artifacts that are referencing it. When computing the Fan-In of an Artifact, multiple accesses to it from the same Artifact are counted as one access.  The higher the number of reference to an Artifact, the more difficult the maintenance as all referencing Artifacts will have to be updated or tested. Reduce the number of references to the Artifact.
+
+###Avoid having Classes implementing too many Interfaces###
+Avoid Classes implementing more than X Interfaces.
 
 ###No 'magic' Numbers###
 Don’t use magic numbers, i.e. place constant numerical values directly into the source code. 
@@ -847,6 +903,15 @@ sense to reconsider this rule.  In general, when the same counters or indexers a
 can provide insight into the functionality, give them meaningful names.
 
 ##Embedded Comments and Documentation##
+###Avoid uncommented Methods and Methods with a very low comments/code ratio###
+Methods should have comments. Methods should have at least a ratio comment/code > X%.
+
+###Avoid Classes with a very low comment/code ratio###
+Classes should have at least a ratio comment/code > X%.
+
+###Avoid Interfaces with a very low comment/code ratio###
+Interfaces should have at least a ratio comment/code > X%.
+
 ###Block Comments###
 Block comments should not be used above Constructors, Methods, and Properties.  Instead use 
 the `///` XML comments discussed in a later section to give C # standard descriptions.  For the 
