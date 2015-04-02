@@ -177,13 +177,12 @@ public class Math
 * Use Pascal Casing.
 
 ##### *Private/Public Fields Names*#####
-* Use Pascal Casing.
 * Do not include any underscore.
 
 ##### *Controls Names*#####
 * Use naming conventions (Exmaple btn* for buttons, chk* for check boxes, cmb* for combo boxes)
 * Do not include any underscore.
-* 
+
 ##### *Exception Names*#####
 * Use Pascal Casing.
 * End with X.
@@ -737,16 +736,16 @@ const) as an exception to this rule, but it should not be the rule.
 Classes should have less than X Constructors and Methods.
 
 ###Avoid large Methods - too many Lines of Codes###
-Methods should not have more than X lines of code. Large methods are more difficult to understand, and are a sign of a bad modularity of the code.
+Methods should not have more than X lines of code.  Large methods are more difficult to understand, and are a sign of a bad modularity of the code.
 
 ###Avoid Classes with a High Lack of Cohesion###
-Lack of cohesion implies Classes should probably be split into two or more sub/classes. Cohesiveness of Methods within a Class is desirable, since it promotes encapsulation.  Low cohesion increases complexity, thereby increasing the likelihood of errors during the development process.  Avoid Classes with a High Lack of Cohesion in Methods (LCOM > X). LCOM is an indicator of a Class whose methods only a few of its fields. 
+Lack of cohesion implies Classes should probably be split into two or more sub/classes.  Cohesiveness of Methods within a Class is desirable, since it promotes encapsulation.  Low cohesion increases complexity, thereby increasing the likelihood of errors during the development process.  Avoid Classes with a High Lack of Cohesion in Methods (LCOM > X). LCOM is an indicator of a Class whose methods only a few of its fields. 
 
 ###Avoid Classes with High Coupling Between Objects###
-The Coupling Between Object (CBO) is equal to the fan-out of a Class, that is, the number of other Classes that are referenced through one of its methods or one of its fields. Excessive coupling between objects is detrimental to modular design and prevents reuse.  The larger the number of couples, the higher the sensitivity to changes in other parts of the design and therefore the more difficult the maintenance.  High CBO numbers might indicate that a class has too many responsibilities. Such a class is potential candidate for a refactoring where the class would delegate some the responsibilities to other classes or new classes (Extract Class, Extract Method refactoring). This will increase modularity and reusability.  When refactoring with architecture in mind, the CBO metric can be used to check classes running on the application client that have high coupling.  These classes are then good candidate for a refactoring towards the Session Facade pattern.
+The Coupling Between Object(CBO) is equal to the fan-out of a Class, that is, the number of other Classes that are referenced through one of its methods or one of its fields. Excessive coupling between objects is detrimental to modular design and prevents reuse.  The larger the number of couples, the higher the sensitivity to changes in other parts of the design and therefore the more difficult the maintenance.  High CBO numbers might indicate that a class has too many responsibilities. Such a class is potential candidate for a refactoring where the class would delegate some the responsibilities to other classes or new classes (Extract Class, Extract Method refactoring). This will increase modularity and reusability.  When refactoring with architecture in mind, the CBO metric can be used to check classes running on the application client that have high coupling.  These classes are then good candidate for a refactoring towards the Session Facade pattern.
 
 ###Avoid High Response for a Class###
-Avoid High Response for a Class (RFC > X)\nRFC is the total number of local methods and remote methods called by methods in the Class.  If a large number of methods can be invoked in response to a message, the testing and debugging of the Class becomes more complicated since it requires a greater level of understanding required on the part of the tester. Reduce the number of local methods and remote methods called by methods in the Class.  Reduce the number of local methods and remote methods called by methods in the Class.
+Avoid High Response for a Class (RFC > X).  RFC is the total number of local methods and remote methods called by methods in the Class.  If a large number of methods can be invoked in response to a message, the testing and debugging of the Class becomes more complicated since it requires a greater level of understanding required on the part of the tester. Reduce the number of local methods and remote methods called by methods in the Class.  Reduce the number of local methods and remote methods called by methods in the Class.
 
 ###Avoid Classes with High Weighted Methods per Class###
 The Weighted Methods per Class metric is defined as the sum of all the Classes method's cyclomatic complexity.  The number of methods and complexity of methods is an indicator of how much time and effort is required to develop and maintain the object.  For maintainability reasons, High Weighted Methods per Class should not be too high.  Reduce the number  - by splitting the Class in two or moving method to a component Class - or the Cyclomatic Complexity of the method of the non compliant Class.
@@ -761,7 +760,7 @@ Public Data Ratio is the percentage of public fields among all fields. Propertie
 High Number Of Children (NOC) is the number of immediate <Sub-Classes> of the Class.  Depth is generally better than breadth in class hierarchy, since it promotes reuse of methods through inheritance.  NOC measures the potential influence a Class has on the design.  Classes with large number of children require more intensive testing as through inheritance an implementation error can potentially lead to many regression bugs. Technical or framework classes which are evolving and will not be changed often should not be concerned by this rule.
 
 ###Avoid Artifacts with High Cyclomatic Complexity###
-Cyclomatic Complexity is a measure of the complexity of the control structure of an Artifact.  It is the number of linearly independent paths and therefore, the minimum number of independent paths when executing the software.  The effort and time for diagnosis of deficiencies or causes of failures, or for identification of parts to be modified is directly related to the number of execution paths, i.e. the complexity of the control flow.  Analyzability declines with increasing Cyclomatic Complexity. \nEach modification must be correct for all execution paths.  Cyclomatic Complexity computes the number of the linearly independent paths, a lower bound of all execution paths ignoring multiple iterations.  Changeability declines with increasing Cyclomatic Complexity.  Complete testing requires coverage of all execution paths.  Cyclomatic Complexity computes the number of the linearly independent paths.  Review the design of the Artifact to reduce number of independent paths. E.g.: Reduce the number of conditional statements.
+Cyclomatic Complexity is a measure of the complexity of the control structure of an Artifact.  It is the number of linearly independent paths and therefore, the minimum number of independent paths when executing the software.  The effort and time for diagnosis of deficiencies or causes of failures, or for identification of parts to be modified is directly related to the number of execution paths, i.e. the complexity of the control flow.  Analyzability declines with increasing Cyclomatic Complexity. Each modification must be correct for all execution paths.  Cyclomatic Complexity computes the number of the linearly independent paths, a lower bound of all execution paths ignoring multiple iterations.  Changeability declines with increasing Cyclomatic Complexity.  Complete testing requires coverage of all execution paths.  Cyclomatic Complexity computes the number of the linearly independent paths.  Review the design of the Artifact to reduce number of independent paths. E.g.: Reduce the number of conditional statements.
 
 ###Avoid Artifacts with High Depth of Code###
 Depth of Code is measured as the maximum number of nested control statements in an artifact.  Artifact that contains an IF statement which contains a While loop which itself contains another IF statement will have a Depth of Code of 3 (at least).\nAvoid Artifacts with Depth of Code (DoC) greater than X.  Complex Artifacts are difficult to maintain. Keeping Artifacts small and simple ensures a good readability of the code.  Review the design of the Artifact to reduce the Depth of Code.
@@ -781,7 +780,7 @@ String concatenation resolved at runtime is much slower than using StringBuilder
 ###Avoid String concatenation in loops###
 When placed in a loop, String concatenation results in the creation and garbage collection of large numbers of temporary objects.  This both consumes memory and can dramatically slow the program execution.  It is recommended to create a StringBuilder before entering the loop, and append to it within the loop, thus reducing the overhead.  It is recommended to create a StringBuilder before entering the loop, and append to it within the loop, thus reducing the overhead. 
 
-###Avoid the use of is inside loops###
+###Avoid the use of 'is' inside loops###
 The run-time type checking is a time expensive operation and as such should be avoided within loops.  In a more general matter, the use of is operator, run-time type checking might indicate a misuse of Object Oriented programming.  In deed, it is always recommended to design classes and interfaces so client code do not need to use 'is' operator and down-casting. The recommended way is to prefer polymorphism over 'is' operator and down-casting.  Prefer polymorphism  over 'is' operator and down-casting.  It is always recommended to design classes and interfaces so client code do not need to use 'is' operator and down-casting.  The recommended way is to prefer polymorphism over  'is' operator and down-casting.
 
 ###Avoid instantiations inside loops###
@@ -813,15 +812,9 @@ When two namespaces refer to each other through a call, the result is a circular
 
 ###Avoid calling properties that clone values in loops###
 It is about a property accessed inside an iteration statement when the property returns a cloned object.  In this case, multiple identical objects are created.  If this is not the intent, access the property outside the iteration statement. Otherwise, multiple unnecessary objects are created and afterward, these objects must be garbage collected.  This degrades performance, especially in compact iteration statements.  Note that it is possible that such a construct is intended, and in that case this violation is perfectly acceptable.  Whenever possible assign the property to a local variable outside the iteration statement and use the local variable inside the iteration statement.
- 
- ######
- ######
- ######
- ######
- ######
- ######
 
-###Avoid Artifacts with High Integration Complexity (IC greater than X). Integration Complexity measures the number of independent integration paths. Integration paths are paths of the control flow graph in which another object is invoked
+###Avoid Artifacts with High Integration Complexity###
+Integration Complexity measures the number of independent integration paths. Integration paths are paths of the control flow graph in which another object is invoked
 
 ###Avoid Interface implementation on Structures###
 Interfaces should not be implemented on Structures.  C## allows structs to implement interfaces. However this language feature can produce unexpected results, as structs are value types while interfaces require reference types to interact with. This means that calls to interface methods via implicit boxing operations will modify a copy rather than the original object. When implicit boxing occurs, a copy of the struct is placed on the heap and calls to the interface methods are executed on this copy via a reference.  All changes to the state of the struct object are discarded after that call.  Declare the type as a class rather than a struct.  This is better Object Oriented practice as classes can hide their implementation details using efficient class property encapsulation.  Create a wrapper class that contains the struct as a member - for example a property (for efficient encapsulation), and use the wrapper class to implement the interface
